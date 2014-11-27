@@ -11,6 +11,7 @@ define (require) ->
 
     defaults:
       syntax: 'bdd'
+      timeout: 2000
       useExpect: true
 
     constructor: ->
@@ -30,5 +31,8 @@ define (require) ->
     configure: ->
       # Setup BDD syntax (describe/it)
       @mocha.setup(@get('syntax'))
+
+      @mocha.timeout(@get('timeout'))
+
       # Make "expect()" globally available
       window.expect = @chai.expect if @get('useExpect')

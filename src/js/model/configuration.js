@@ -16,6 +16,7 @@
 
       TestConfiguration.prototype.defaults = {
         syntax: 'bdd',
+        timeout: 2000,
         useExpect: true
       };
 
@@ -43,6 +44,7 @@
 
       TestConfiguration.prototype.configure = function() {
         this.mocha.setup(this.get('syntax'));
+        this.mocha.timeout(this.get('timeout'));
         if (this.get('useExpect')) {
           return window.expect = this.chai.expect;
         }
